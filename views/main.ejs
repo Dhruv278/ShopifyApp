@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Product Data</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    button {
+      padding: 8px 12px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+<script>
+  console.log()
+</script>
+<h2>Product Data</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    </tr>
+    <% for (let i = 0; i < products.length; i++) { %>
+        <tr>
+          <td><%= products[i].name %></td>
+          <td>$<%= products[i].price.current.toFixed(2) %></td>
+          
+          <td><button onclick="pushData(`<%= products[i].name %>`,'<%= JSON.stringify(products[i]) %>')">Push Data</button></td>
+        </tr>
+      <% } %>
+    <!-- Add more rows for additional products -->
+  </tbody>
+</table>
+
+<script >
+
+
+
+</script>
+<script src="/index.js">
+      
+</script>
+
+
+</body>
+</html>
