@@ -5,7 +5,7 @@ const pushData = async (name, data) => {
         const productData = JSON.parse(data);
         const storename = prompt("Enter your Shopify store name: ");
 
-        const url = `https://shopify-app-teal.vercel.app/api/shopify/addProduct/${storename}`;
+        const url = `https://blinkstore-shopify.onrender.com/api/shopify/addProduct/${storename}`;
         const options = {
             method: 'POST',
             headers: {
