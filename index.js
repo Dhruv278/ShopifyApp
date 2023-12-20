@@ -22,7 +22,7 @@ app.set('views', path.join(__dirname, 'views/'));
 
 
 app.post('/api/shopify/addProduct/:shop', async (req, res) => {
-    const shopifyStores=readData('./data.json');
+    const shopifyStores=readData(path.join(__dirname,'data.json') );
     let token;
     shopifyStores.forEach(store=>{
         if(store.shopName.toString()===req.params.shop.toString()){
@@ -122,7 +122,7 @@ app.get('/api/shopify/authorize', async (req, res) => {
 app.get('/api/shopify/redirect', async (req, res) => {
     var data = await redirect(req.query.code, req.query.shop);
     if (data.access_token) {
-        let shops = readData('./data.json');
+        let shops = readData(path.join(__dirname,'data.json'));
         let shopFound = false;
         shops.forEach(shop => {
             if (shop.shopName.toString() === req.query.shop.toString()) {
@@ -141,7 +141,7 @@ app.get('/api/shopify/redirect', async (req, res) => {
             )
             shops.push({ shopName: req.query.shop, shopToken: data.access_token }); // Add a new shop if not found
         }
-        await writeData('./data.json', shops);
+        await writeData(path.join(__dirname,'data.json'), shops);
         res.json({ message: 'Shop token updated or added successfully' });
     } else {
         return res.status(500).json({
