@@ -5,7 +5,7 @@ const pushData = async (name, data) => {
         const productData = JSON.parse(data);
         const storename = prompt("Enter your Shopify store name: ");
 
-        const url = `http://localhost:3000/api/shopify/addProduct/${storename}`;
+        const url = `https://shopify-app-teal.vercel.app/api/shopify/addProduct/${storename}`;
         const options = {
             method: 'POST',
             headers: {
