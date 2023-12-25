@@ -24,7 +24,7 @@ const addProductToShopifyStore = async (shop, token, payload) => {
         })
     }
   const variantsData=generateShopifyVariants(options,payload.price.current);
-  console.log(variantsData,);
+  console.log(variantsData);
 
     // console.log(sizes)
     // let product={
@@ -46,13 +46,25 @@ const addProductToShopifyStore = async (shop, token, payload) => {
         product: {
             title: payload.name,
             body_html:payload.description,
-            vendor: 'Blinkstore',
             product_type: payload.of.bku,
             options: options,
+            images:[
+                {
+                    src:payload.images["custom-0"].original
+                }
+            ],
             variants:variantsData,
+            metafields: [
+                {
+                  key: 'Store',
+                  value: 'Blinkstore',
+                  value_type: 'string',
+                  namespace: 'global', // Namespace for the metafield (global or your custom namespace)
+                },
+            ]
           },
     };
-
+        console.log(product.product.images)
 
     try {
 
